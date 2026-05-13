@@ -1,15 +1,86 @@
+/* General Layout */
 body {
-    background-color: #0d1117; /* Dark background like the screenshot */
+    margin: 0;
     font-family: sans-serif;
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* Fixed Full-Screen Video Background */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Glassy White Card */
 .container {
-    background-color: #f0f0f0; /* Light gray card */
-    padding: 40px;
-    border-radius: 20px; /* Rounded corners */
-    max-width: 800px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: rgba(240, 240, 240, 0.85); 
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+/* Circular Avatar Styling */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+/* HyperOS Style Dropdowns */
+details {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    margin-top: 15px;
+    overflow: hidden;
+    text-align: left;
+}
+
+summary {
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    outline: none;
+}
+
+/* Custom Rotating Arrow */
+summary::before {
+    content: "〉"; 
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-right: 8px;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+/* Smooth Swipe Animation */
+.content {
+    padding: 0 15px 15px 15px;
+    animation: hyperSwipe 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes hyperSwipe {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
